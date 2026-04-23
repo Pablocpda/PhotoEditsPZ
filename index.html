@@ -92,16 +92,111 @@
 
         section {
             display: none;
-            padding: 80px 0;
+            padding: 60px 0;
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+            padding: 40px;
+            margin: 20px 0;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
         section.active {
             display: block;
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .about-text h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 19px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        /* Process Section */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .step-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 18px;
+            text-align: center;
+        }
+
+        .step-number {
+            font-size: 48px;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 700px;
+            margin: 40px auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+            cursor: pointer;
+        }
+
+        .faq-question {
+            font-size: 19px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--text-secondary);
+            margin-top: 10px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
         }
 
         /* Hero Style */
@@ -126,55 +221,128 @@
             margin: 0 auto;
         }
 
-        /* Gallery Grid */
-        .gallery {
+        /* Gallery Styles */
+        .gallery-category {
+            margin-bottom: 60px;
+        }
+
+        .category-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            padding-left: 10px;
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        /* Slider for Bodas */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            border-radius: 24px;
+            overflow: hidden;
+            background: var(--bg-card);
+            margin-bottom: 30px;
+        }
+
+        .slider-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+        }
+
+        .slider-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Grid for other categories */
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            padding-top: 40px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
         }
 
         .photo-card {
             background: var(--bg-card);
-            border-radius: 18px;
+            border-radius: 12px;
             overflow: hidden;
             position: relative;
-            aspect-ratio: 4/5;
+            aspect-ratio: 1/1;
             cursor: pointer;
             transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-
-        .photo-card:hover {
-            transform: scale(1.02);
-        }
-
-        .photo-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .photo-info {
-            position: absolute;
-            bottom: 30px;
-            left: 30px;
-            z-index: 10;
-        }
-
-        .photo-info h3 {
-            font-size: 24px;
-            font-weight: 600;
-            color: white;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         /* Packages Grid */
         .packages {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             margin-top: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .package-card {
+            background: var(--bg-card);
+            border-radius: 18px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            aspect-ratio: 1/1; /* Make it square */
+        }
+
+        @media (max-width: 1024px) {
+            .packages {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .packages {
+                grid-template-columns: 1fr;
+            }
         }
 
         .package-card {
@@ -193,6 +361,12 @@
 
         .package-card.selected {
             border-color: var(--accent-blue);
+        }
+
+        .package-card.premium-highlight {
+            border: 2px solid white;
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.1);
         }
 
         .package-name {
@@ -340,11 +514,28 @@
         }
 
         footer {
-            padding: 60px 0;
+            padding: 80px 0;
             text-align: center;
             color: var(--text-secondary);
-            font-size: 12px;
+            font-size: 14px;
             border-top: 1px solid var(--border-color);
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: white;
         }
 
         /* Mobile */
@@ -362,6 +553,7 @@
             <div class="logo" onclick="showSection('gallery')">PhotoEditsPZ</div>
             <ul>
                 <li><a onclick="showSection('gallery')">Galería</a></li>
+                <li><a onclick="showSection('about')">Sobre Mí</a></li>
                 <li><a onclick="showSection('packages')">Paquetes</a></li>
                 <li><a onclick="showSection('contact')">Contacto</a></li>
             </ul>
@@ -370,39 +562,123 @@
 
     <main class="container">
         <!-- Gallery Section -->
-        <section id="gallery" class="active">
+        <section id="gallery" class="active liquid-glass">
             <div class="hero">
                 <h1>Captura tus mejores momentos.</h1>
                 <p>Fotografía profesional de alta fidelidad para eventos que trascienden.</p>
             </div>
             <div class="gallery">
-                <div class="photo-card">
-                    <img src="assets/event_corp.png" alt="Evento Corporativo">
-                    <div class="photo-info"><h3>Corporativo</h3></div>
+                <!-- Bodas Slider -->
+                <div class="gallery-category">
+                    <h2 class="category-title">Bodas</h2>
+                    <div class="slider-container reveal">
+                        <div class="slider-track" id="bodaSlider">
+                            <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/c7103c247953569.69e6cbd1b26e5.jpg" alt="Boda 1"></div>
+                            <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/5a93a2247953341.69e6c99332ead.jpg" alt="Boda 2"></div>
+                            <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/6a2cf2247953569.69e6cbd1b048b.jpg" alt="Boda 3"></div>
+                            <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/bf8de1247953341.69e6c993337ed.jpg" alt="Boda 4"></div>
+                            <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/c7103c247953569.69e6cbd1b26e5.jpg" alt="Boda 5"></div>
+                            <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/5a93a2247953341.69e6c99332ead.jpg" alt="Boda 6"></div>
+                            <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/6a2cf2247953569.69e6cbd1b048b.jpg" alt="Boda 7"></div>
+                            <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/bf8de1247953341.69e6c993337ed.jpg" alt="Boda 8"></div>
+                            <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/c7103c247953569.69e6cbd1b26e5.jpg" alt="Boda 9"></div>
+                            <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/5a93a2247953341.69e6c99332ead.jpg" alt="Boda 10"></div>
+                        </div>
+                        <div class="slider-nav">
+                            <button class="slider-btn" onclick="moveSlider(-1)">←</button>
+                            <button class="slider-btn" onclick="moveSlider(1)">→</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="photo-card">
-                    <img src="assets/wedding.png" alt="Bodas">
-                    <div class="photo-info"><h3>Bodas</h3></div>
+
+                <!-- Eventos Sociales Grid -->
+                <div class="gallery-category">
+                    <h2 class="category-title">Eventos Sociales</h2>
+                    <div class="gallery-grid">
+                        <div class="photo-card reveal"><img src="assets/event_corp.png" alt="Social 1"></div>
+                        <div class="photo-card reveal"><img src="assets/birthday.png" alt="Social 2"></div>
+                        <div class="photo-card reveal"><img src="assets/event_corp.png" alt="Social 3"></div>
+                    </div>
                 </div>
-                <div class="photo-card">
-                    <img src="assets/birthday.png" alt="Cumpleaños">
-                    <div class="photo-info"><h3>Cumpleaños</h3></div>
-                </div>
-                <div class="photo-card">
-                    <img src="assets/graduation.png" alt="Graduación">
-                    <div class="photo-info"><h3>Graduaciones</h3></div>
+
+                <!-- Retratos Grid -->
+                <div class="gallery-category">
+                    <h2 class="category-title">Retratos</h2>
+                    <div class="gallery-grid">
+                        <div class="photo-card reveal"><img src="assets/wedding.png" alt="Retrato 1"></div>
+                        <div class="photo-card reveal"><img src="assets/graduation.png" alt="Retrato 2"></div>
+                        <div class="photo-card reveal"><img src="assets/wedding.png" alt="Retrato 3"></div>
+                    </div>
                 </div>
             </div>
-            <div class="cta-section">
+            <div class="cta-section reveal">
                 <button class="btn btn-primary" onclick="showSection('packages')">Explorar Paquetes</button>
             </div>
         </section>
 
+        <!-- About Section -->
+        <section id="about" class="liquid-glass">
+            <div class="hero reveal">
+                <h1>Pasión detrás del lente.</h1>
+                <p>Capturando la esencia de Honduras a través de momentos inolvidables.</p>
+            </div>
+            <div class="about-grid reveal">
+                <div class="about-text">
+                    <h2>Hola, soy Pablo.</h2>
+                    <p>Mi misión es simple: capturar tus recuerdos para que ningún momento importante se escape. Creo que la vida se vive en segmentos, y mi trabajo es asegurar que esos segmentos vivan para siempre.</p>
+                    <p>Me especializo en fotografía de alta fidelidad, enfocándome en la autenticidad y la emoción de cada evento.</p>
+                </div>
+                <div class="photo-card" style="aspect-ratio: 1/1;">
+                    <img src="assets/wedding.png" alt="Pablo - Fotógrafo">
+                </div>
+            </div>
+
+            <div class="hero reveal" style="margin-top: 100px;">
+                <h1>Nuestro Proceso.</h1>
+                <p>Tres pasos para garantizar la excelencia en cada entrega.</p>
+            </div>
+            <div class="process-steps reveal">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <h3>Captura</h3>
+                    <p style="color: var(--text-secondary);">Cobertura total del evento con equipo profesional y ojo artístico.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <h3>Edición</h3>
+                    <p style="color: var(--text-secondary);">Procesamiento digital detallado para resaltar la belleza de cada toma.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <h3>Entrega</h3>
+                    <p style="color: var(--text-secondary);">Galería digital de alta resolución lista para compartir y revivir.</p>
+                </div>
+            </div>
+
+            <div class="hero reveal" style="margin-top: 100px;">
+                <h1>Preguntas Frecuentes.</h1>
+            </div>
+            <div class="faq-container reveal">
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">¿Con cuánto tiempo debo reservar? <span>+</span></div>
+                    <div class="faq-answer">Recomendamos reservar al menos con 2 semanas de anticipación para asegurar disponibilidad los fines de semana.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">¿Cuál es el tiempo de entrega? <span>+</span></div>
+                    <div class="faq-answer">Dependiendo del paquete, entregamos las fotos entre 5 y 10 días hábiles.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">¿Se requiere un depósito? <span>+</span></div>
+                    <div class="faq-answer">Sí, se solicita el 50% para reservar la fecha y el restante al finalizar la sesión.</div>
+                </div>
+            </div>
+        </section>
+
         <!-- Packages Section -->
-        <section id="packages">
+        <section id="packages" class="liquid-glass">
             <div class="hero">
                 <h1>Elige tu experiencia.</h1>
-                <p>Tres niveles de cobertura diseñados para cada necesidad.</p>
+                <p>Cuatro niveles de cobertura diseñados para cada necesidad.</p>
             </div>
             <div class="packages" id="packagesContainer"></div>
             <div class="cta-section">
@@ -411,7 +687,7 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact">
+        <section id="contact" class="liquid-glass">
             <div class="hero">
                 <h1>Hablemos de tu evento.</h1>
                 <p>Completa los detalles y agendaremos una sesión personalizada.</p>
@@ -452,36 +728,52 @@
 
     <footer>
         <p>&copy; 2026 PhotoEditsPZ. Honduras. Excelencia en cada captura.</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/pz_photoedits?igsh=MWk0amlpdGg0bWczaw%3D%3D&utm_source=qr" target="_blank">Instagram (Pro)</a>
+            <a href="https://www.instagram.com/pabloz02?igsh=MTloaTYyc2pyZDZrcw%3D%3D&utm_source=qr" target="_blank">Instagram (Personal)</a>
+            <a href="https://www.tiktok.com/@pablocpda1?_r=1&_t=ZS-95lIg18D1ls" target="_blank">TikTok</a>
+            <a href="https://wa.me/50497110000" target="_blank">WhatsApp</a>
+        </div>
     </footer>
 
     <script>
         const packages = [
             {
+                id: 4,
+                name: "Sencillo",
+                price: "L 1,000",
+                duration: "1 hora",
+                photos: "10+ fotos",
+                delivery: "3 días",
+                details: "Para sesiones rápidas y espontáneas."
+            },
+            {
                 id: 1,
                 name: "Estándar",
-                price: "L 1,000",
-                duration: "4 horas",
-                photos: "150+ fotos",
-                delivery: "7 días",
-                details: "Esencial para eventos íntimos."
+                price: "L 4,000",
+                duration: "5 horas",
+                photos: "70+ fotos",
+                delivery: "10 días",
+                details: "Ideal para sesiones individuales o eventos cortos."
             },
             {
                 id: 2,
                 name: "Premium",
-                price: "L 1,500",
-                duration: "6 horas",
-                photos: "250+ fotos",
-                delivery: "5 días",
-                details: "Nuestra opción más popular."
+                price: "L 8,000",
+                duration: "2 sesiones / 8 horas",
+                photos: "150+ fotos",
+                delivery: "7 días",
+                details: "Nuestra recomendación para cobertura completa de eventos.",
+                highlight: true
             },
             {
                 id: 3,
                 name: "Deluxe",
-                price: "L 2,000",
-                duration: "8 horas",
-                photos: "400+ fotos",
-                delivery: "3 días",
-                details: "Cobertura total sin compromisos."
+                price: "L 10,000",
+                duration: "3 sesiones / 12 horas",
+                photos: "200+ fotos",
+                delivery: "5 días",
+                details: "La experiencia máxima con múltiples sesiones y entrega prioritaria."
             }
         ];
 
@@ -490,7 +782,7 @@
         function initPackages() {
             const container = document.getElementById('packagesContainer');
             container.innerHTML = packages.map(pkg => `
-                <div class="package-card" onclick="selectPackage(${pkg.id})" id="pkg-${pkg.id}">
+                <div class="package-card ${pkg.highlight ? 'premium-highlight' : ''}" onclick="selectPackage(${pkg.id})" id="pkg-${pkg.id}">
                     <div class="package-name">${pkg.name}</div>
                     <div class="package-price">${pkg.price}</div>
                     <div class="package-details">
@@ -521,13 +813,37 @@
             const sections = document.querySelectorAll('section');
             sections.forEach(s => s.classList.remove('active'));
             
-            // Small timeout to allow fade out if we were to add it
             setTimeout(() => {
-                document.getElementById(sectionId).classList.add('active');
+                const target = document.getElementById(sectionId);
+                target.classList.add('active');
+                
+                // Trigger reveal for elements in new section
+                handleReveal();
             }, 50);
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        function toggleFaq(element) {
+            element.classList.toggle('active');
+            const span = element.querySelector('span');
+            span.innerText = element.classList.contains('active') ? '-' : '+';
+        }
+
+        function handleReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleReveal);
+        window.addEventListener('load', handleReveal);
 
         function submitForm(event) {
             event.preventDefault();
@@ -565,7 +881,22 @@
             showSection('gallery');
         }
 
-        window.addEventListener('DOMContentLoaded', initPackages);
+        let currentSlide = 0;
+        const totalSlides = 10;
+
+        function moveSlider(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            const track = document.getElementById('bodaSlider');
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Auto-advance slider
+        setInterval(() => moveSlider(1), 5000);
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initPackages();
+            handleReveal();
+        });
     </script>
 </body>
 </html>
