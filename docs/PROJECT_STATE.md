@@ -18,7 +18,7 @@ Status: Phase 2 (Prototype) ✅ complete + enhanced. Apple-style prototype with 
 
 ## In Progress
 
-None — Phase 2 closed.
+- [x] Instagram Integration (Experimental/Static) — Pending user assets upload.
 
 ---
 

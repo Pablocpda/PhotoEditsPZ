@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia - [Nombres Clientes]</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent-color: #d4af37;
+            --bg-black: #0a0a0a;
+            --text-main: #ffffff;
+            --text-secondary: #86868b;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.2, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .story-hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.5), var(--bg-black)), 
+                        url('wedding_story_hero_1777256371876.png') no-repeat center center/cover;
+            background-attachment: fixed;
+        }
+
+        .story-hero p {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .story-hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(48px, 8vw, 120px);
+            margin: 0;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .narrative-section {
+            max-width: 700px;
+            margin: 150px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .narrative-section h2 {
+            font-family: var(--font-serif);
+            font-size: 32px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .narrative-section p {
+            font-size: 20px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .full-width-photo {
+            width: 100%;
+            height: 80vh;
+            margin-bottom: 100px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .full-width-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-grid-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        .photo-card {
+            border-radius: 4px;
+            overflow: hidden;
+            background: #151515;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .quote-block {
+            font-family: var(--font-serif);
+            font-size: 42px;
+            text-align: center;
+            margin: 150px auto;
+            max-width: 900px;
+            font-style: italic;
+            color: var(--accent-color);
+            line-height: 1.3;
+        }
+
+        .footer {
+            padding: 150px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer .logo {
+            font-family: var(--font-serif);
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .photo-grid-split { grid-template-columns: 1fr; }
+            .story-hero h1 { font-size: 56px; }
+            .quote-block { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="story-hero">
+        <p class="reveal">Una historia por PhotoEditsPZ</p>
+        <h1 class="reveal">[Nombres de Clientes]</h1>
+    </div>
+
+    <div class="narrative-section reveal">
+        <h2>"Lo que las palabras no alcanzan a decir"</h2>
+        <p id="narrative-text">
+            Hay días que se sienten como un sueño, y hay momentos que merecen ser detenidos en el tiempo. 
+            Esta es una pequeña ventana a las emociones, risas y detalles que hicieron que su historia 
+            fuera inolvidable.
+        </p>
+    </div>
+
+    <div class="gallery-container">
+        <div class="full-width-photo reveal">
+            <img src="wedding_story_hero_1777256371876.png" alt="Gran Momento">
+        </div>
+
+        <div class="photo-grid-split">
+            <div class="photo-card reveal" style="aspect-ratio: 4/5;">
+                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/5a93a2247953341.69e6c99332ead.jpg" alt="Detalle 1">
+            </div>
+            <div class="photo-card reveal" style="aspect-ratio: 4/5; margin-top: 50px;">
+                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/6a2cf2247953569.69e6cbd1b048b.jpg" alt="Detalle 2">
+            </div>
+        </div>
+
+        <div class="quote-block reveal">
+            "La fotografía es el único lenguaje que puede ser entendido en cualquier parte del mundo."
+        </div>
+
+        <div class="full-width-photo reveal" style="height: 60vh;">
+            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/bf8de1247953341.69e6c993337ed.jpg" alt="Final">
+        </div>
+    </div>
+
+    <div class="footer reveal">
+        <div class="logo">PhotoEditsPZ</div>
+        <p style="opacity: 0.5; font-size: 14px;">Capturando el sentido de la vida.</p>
+    </div>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

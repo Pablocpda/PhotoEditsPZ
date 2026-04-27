@@ -558,15 +558,32 @@
                 <li><a onclick="showSection('contact')">Contacto</a></li>
             </ul>
         </nav>
-    </header>
-
-    <main class="container">
-        <!-- Gallery Section -->
+    </header    <main class="container">
+        <!-- Story Section (Home) -->
         <section id="gallery" class="active liquid-glass">
-            <div class="hero">
-                <h1>Captura tus mejores momentos.</h1>
-                <p>Fotografía profesional de alta fidelidad para eventos que trascienden.</p>
+            <div class="hero reveal">
+                <h1 style="font-size: 64px;">Capturar momentos es mi pasión.</h1>
+                <p>La vida son los recuerdos que no olvidamos. Mi trabajo es que puedas revivirlos para siempre.</p>
             </div>
+
+            <div class="about-grid reveal" style="margin-top: 40px;">
+                <div class="about-text">
+                    <h2>Hola, soy Pablo.</h2>
+                    <p>Desde pequeño siempre tuve un gusto especial por las fotos, pero fue en **2018** cuando todo cambió. Estaba en la boda de unos amigos y sentí la necesidad imperiosa de capturar lo que estaba pasando.</p>
+                    <p>Logré una fotografía que a ellos les encantó; al ver su reacción, sentí una emoción completamente nueva. Desde ese día, mi pasión no ha dejado de crecer, alimentada por cada momento que he tenido la suerte de capturar para mis amigos y clientes.</p>
+                    <p>Hoy, mi misión es entregarte esa misma emoción a ti, contando la historia de tu día especial de una manera única.</p>
+                </div>
+                <div class="photo-card" style="aspect-ratio: 1/1; border-radius: 40px; overflow: hidden;">
+                    <!-- Placeholder for Pablo's photo or his first iconic wedding photo -->
+                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/c7103c247953569.69e6cbd1b26e5.jpg" alt="Pablo - La foto que lo inició todo">
+                </div>
+            </div>
+
+            <div class="hero reveal" style="margin-top: 100px;">
+                <h1>Mi Portafolio</h1>
+                <p>Una mirada a las historias que he tenido el honor de narrar.</p>
+            </div>
+
             <div class="gallery">
                 <!-- Bodas Slider -->
                 <div class="gallery-category">
@@ -577,12 +594,6 @@
                             <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/5a93a2247953341.69e6c99332ead.jpg" alt="Boda 2"></div>
                             <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/6a2cf2247953569.69e6cbd1b048b.jpg" alt="Boda 3"></div>
                             <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/bf8de1247953341.69e6c993337ed.jpg" alt="Boda 4"></div>
-                            <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/c7103c247953569.69e6cbd1b26e5.jpg" alt="Boda 5"></div>
-                            <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/5a93a2247953341.69e6c99332ead.jpg" alt="Boda 6"></div>
-                            <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/6a2cf2247953569.69e6cbd1b048b.jpg" alt="Boda 7"></div>
-                            <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/bf8de1247953341.69e6c993337ed.jpg" alt="Boda 8"></div>
-                            <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/c7103c247953569.69e6cbd1b26e5.jpg" alt="Boda 9"></div>
-                            <div class="slide"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/5a93a2247953341.69e6c99332ead.jpg" alt="Boda 10"></div>
                         </div>
                         <div class="slider-nav">
                             <button class="slider-btn" onclick="moveSlider(-1)">←</button>
@@ -591,85 +602,43 @@
                     </div>
                 </div>
 
-                <!-- Eventos Sociales Grid -->
+                <!-- Instagram Moments Section -->
                 <div class="gallery-category">
-                    <h2 class="category-title">Eventos Sociales</h2>
+                    <h2 class="category-title">Momentos Recientes</h2>
                     <div class="gallery-grid">
-                        <div class="photo-card reveal"><img src="assets/event_corp.png" alt="Social 1"></div>
-                        <div class="photo-card reveal"><img src="assets/birthday.png" alt="Social 2"></div>
-                        <div class="photo-card reveal"><img src="assets/event_corp.png" alt="Social 3"></div>
-                    </div>
-                </div>
-
-                <!-- Retratos Grid -->
-                <div class="gallery-category">
-                    <h2 class="category-title">Retratos</h2>
-                    <div class="gallery-grid">
-                        <div class="photo-card reveal"><img src="assets/wedding.png" alt="Retrato 1"></div>
-                        <div class="photo-card reveal"><img src="assets/graduation.png" alt="Retrato 2"></div>
-                        <div class="photo-card reveal"><img src="assets/wedding.png" alt="Retrato 3"></div>
+                        <div class="photo-card reveal"><img src="assets/instagram/ig_1.jpg" alt="IG 1" onerror="this.src='https://via.placeholder.com/400x400?text=Subir+ig_1.jpg'"></div>
+                        <div class="photo-card reveal"><img src="assets/instagram/ig_2.jpg" alt="IG 2" onerror="this.src='https://via.placeholder.com/400x400?text=Subir+ig_2.jpg'"></div>
+                        <div class="photo-card reveal"><img src="assets/instagram/ig_3.jpg" alt="IG 3" onerror="this.src='https://via.placeholder.com/400x400?text=Subir+ig_3.jpg'"></div>
                     </div>
                 </div>
             </div>
+            
             <div class="cta-section reveal">
-                <button class="btn btn-primary" onclick="showSection('packages')">Explorar Paquetes</button>
+                <button class="btn btn-primary" onclick="showSection('packages')">Ver Paquetes y Planes</button>
             </div>
         </section>
 
-        <!-- About Section -->
+        <!-- About Section (Process) -->
         <section id="about" class="liquid-glass">
             <div class="hero reveal">
-                <h1>Pasión detrás del lente.</h1>
-                <p>Capturando la esencia de Honduras a través de momentos inolvidables.</p>
-            </div>
-            <div class="about-grid reveal">
-                <div class="about-text">
-                    <h2>Hola, soy Pablo.</h2>
-                    <p>Mi misión es simple: capturar tus recuerdos para que ningún momento importante se escape. Creo que la vida se vive en segmentos, y mi trabajo es asegurar que esos segmentos vivan para siempre.</p>
-                    <p>Me especializo en fotografía de alta fidelidad, enfocándome en la autenticidad y la emoción de cada evento.</p>
-                </div>
-                <div class="photo-card" style="aspect-ratio: 1/1;">
-                    <img src="assets/wedding.png" alt="Pablo - Fotógrafo">
-                </div>
-            </div>
-
-            <div class="hero reveal" style="margin-top: 100px;">
-                <h1>Nuestro Proceso.</h1>
-                <p>Tres pasos para garantizar la excelencia en cada entrega.</p>
+                <h1>Una experiencia diferente.</h1>
+                <p>No solo te entrego fotos, te entrego tu historia.</p>
             </div>
             <div class="process-steps reveal">
                 <div class="step-card">
                     <div class="step-number">01</div>
-                    <h3>Captura</h3>
-                    <p style="color: var(--text-secondary);">Cobertura total del evento con equipo profesional y ojo artístico.</p>
+                    <h3>Briefing</h3>
+                    <p style="color: var(--text-secondary);">Hablamos de lo que resalta para ti, los nombres y detalles clave que quieres recordar.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">02</div>
-                    <h3>Edición</h3>
-                    <p style="color: var(--text-secondary);">Procesamiento digital detallado para resaltar la belleza de cada toma.</p>
+                    <h3>El Evento</h3>
+                    <p style="color: var(--text-secondary);">Capturo los detalles con una mirada emocional, enfocada en la autenticidad.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">03</div>
-                    <h3>Entrega</h3>
-                    <p style="color: var(--text-secondary);">Galería digital de alta resolución lista para compartir y revivir.</p>
-                </div>
-            </div>
-
-            <div class="hero reveal" style="margin-top: 100px;">
-                <h1>Preguntas Frecuentes.</h1>
-            </div>
-            <div class="faq-container reveal">
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">¿Con cuánto tiempo debo reservar? <span>+</span></div>
-                    <div class="faq-answer">Recomendamos reservar al menos con 2 semanas de anticipación para asegurar disponibilidad los fines de semana.</div>
-                </div>
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">¿Cuál es el tiempo de entrega? <span>+</span></div>
-                    <div class="faq-answer">Dependiendo del paquete, entregamos las fotos entre 5 y 10 días hábiles.</div>
-                </div>
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">¿Se requiere un depósito? <span>+</span></div>
-                    <div class="faq-answer">Sí, se solicita el 50% para reservar la fecha y el restante al finalizar la sesión.</div>
+                    <h3>Storytelling</h3>
+                    <p style="color: var(--text-secondary);">Recibes una landing page personalizada con la historia narrativa de tu día.</p>
                 </div>
             </div>
         </section>
@@ -677,107 +646,50 @@
         <!-- Packages Section -->
         <section id="packages" class="liquid-glass">
             <div class="hero">
-                <h1>Elige tu experiencia.</h1>
-                <p>Cuatro niveles de cobertura diseñados para cada necesidad.</p>
+                <h1>Planes de Captura</h1>
+                <p>Selecciona el plan que mejor se adapte a tu historia.</p>
             </div>
             <div class="packages" id="packagesContainer"></div>
-            <div class="cta-section">
-                <button class="btn btn-primary" onclick="showSection('contact')" id="continueBtn" style="display: none;">Continuar a Reserva</button>
-            </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- Contact Section (WhatsApp) -->
         <section id="contact" class="liquid-glass">
             <div class="hero">
-                <h1>Hablemos de tu evento.</h1>
-                <p>Completa los detalles y agendaremos una sesión personalizada.</p>
+                <h1>¿Listo para capturar tu historia?</h1>
+                <p>Hablemos por WhatsApp para afinar los detalles de tu evento.</p>
             </div>
-            <form id="contactForm" onsubmit="submitForm(event)">
-                <div class="form-group">
-                    <label>Nombre Completo</label>
-                    <input type="text" id="name" required placeholder="Tu nombre">
+            
+            <div style="max-width: 480px; margin: 40px auto; text-align: center;">
+                <div class="form-group" style="text-align: left;">
+                    <label>Tu Nombre</label>
+                    <input type="text" id="clientName" placeholder="Escribe tu nombre aquí" required>
                 </div>
-                <div class="form-group">
-                    <label>Correo Electrónico</label>
-                    <input type="email" id="email" required placeholder="tu@email.com">
-                </div>
-                <div class="form-group">
-                    <label>Teléfono</label>
-                    <input type="tel" id="phone" required placeholder="+504 ....">
-                </div>
-                <div class="form-group">
-                    <label>Detalles del Evento</label>
-                    <textarea id="eventDescription" required placeholder="Fecha, lugar y tipo de evento..."></textarea>
-                </div>
-                <input type="hidden" id="selectedPackage">
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Solicitar Reserva</button>
-            </form>
+                <div id="packageDisplay" style="margin-bottom: 20px; font-weight: 600; color: var(--accent-blue);"></div>
+                <button onclick="sendWhatsApp()" class="btn btn-primary" style="width: 100%; background-color: #25D366; border: none; padding: 20px; font-size: 20px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.164 1.236 8.41 3.483 2.247 2.247 3.483 5.234 3.483 8.409 0 6.556-5.332 11.888-11.888 11.888-2.022 0-4.005-.516-5.753-1.491l-6.039 1.608zm5.789-3.238c1.554.922 3.333 1.411 5.15 1.411 5.452 0 9.888-4.436 9.888-9.888 0-2.639-1.028-5.12-2.893-6.986-1.866-1.865-4.347-2.893-6.986-2.893-5.452 0-9.888 4.436-9.888 9.888 0 1.848.514 3.652 1.488 5.22l-.105.155-1.011 3.693 3.788-.999.158.101z"/></svg>
+                    Contactar por WhatsApp
+                </button>
+            </div>
         </section>
     </main>
 
-    <!-- Booking Confirmation Modal -->
-    <div class="modal" id="confirmationModal">
-        <div class="modal-content">
-            <h2>Listo.</h2>
-            <p>Hemos recibido tu solicitud.</p>
-            <div class="confirmation-details" id="confirmationDetails"></div>
-            <p style="font-size: 14px;">Un especialista se pondrá en contacto contigo en menos de 24 horas.</p>
-            <button class="btn btn-primary" onclick="resetFlow()" style="margin-top: 30px;">Cerrar</button>
-        </div>
-    </div>
-
     <footer>
-        <p>&copy; 2026 PhotoEditsPZ. Honduras. Excelencia en cada captura.</p>
+        <p>&copy; 2026 PhotoEditsPZ. Honduras. Historias que cobran vida.</p>
         <div class="social-links">
-            <a href="https://www.instagram.com/pz_photoedits?igsh=MWk0amlpdGg0bWczaw%3D%3D&utm_source=qr" target="_blank">Instagram (Pro)</a>
-            <a href="https://www.instagram.com/pabloz02?igsh=MTloaTYyc2pyZDZrcw%3D%3D&utm_source=qr" target="_blank">Instagram (Personal)</a>
-            <a href="https://www.tiktok.com/@pablocpda1?_r=1&_t=ZS-95lIg18D1ls" target="_blank">TikTok</a>
+            <a href="https://www.instagram.com/pz_photoedits" target="_blank">Instagram</a>
             <a href="https://wa.me/50497110000" target="_blank">WhatsApp</a>
         </div>
     </footer>
 
     <script>
         const packages = [
-            {
-                id: 4,
-                name: "Sencillo",
-                price: "L 1,000",
-                duration: "1 hora",
-                photos: "10+ fotos",
-                delivery: "3 días",
-                details: "Para sesiones rápidas y espontáneas."
-            },
-            {
-                id: 1,
-                name: "Estándar",
-                price: "L 4,000",
-                duration: "5 horas",
-                photos: "70+ fotos",
-                delivery: "10 días",
-                details: "Ideal para sesiones individuales o eventos cortos."
-            },
-            {
-                id: 2,
-                name: "Premium",
-                price: "L 8,000",
-                duration: "2 sesiones / 8 horas",
-                photos: "150+ fotos",
-                delivery: "7 días",
-                details: "Nuestra recomendación para cobertura completa de eventos.",
-                highlight: true
-            },
-            {
-                id: 3,
-                name: "Deluxe",
-                price: "L 10,000",
-                duration: "3 sesiones / 12 horas",
-                photos: "200+ fotos",
-                delivery: "5 días",
-                details: "La experiencia máxima con múltiples sesiones y entrega prioritaria."
-            }
+            { id: 4, name: "Sencillo", price: "L 1,000", duration: "1 hora", photos: "10+ fotos" },
+            { id: 1, name: "Estándar", price: "L 4,000", duration: "5 horas", photos: "70+ fotos" },
+            { id: 2, name: "Premium", price: "L 8,000", duration: "2 sesiones / 8 horas", photos: "150+ fotos", highlight: true },
+            { id: 3, name: "Deluxe", price: "L 10,000", duration: "3 sesiones / 12 horas", photos: "200+ fotos" }
         ];
 
-        let selectedPackageId = null;
+        let selectedPackage = null;
 
         function initPackages() {
             const container = document.getElementById('packagesContainer');
@@ -788,8 +700,6 @@
                     <div class="package-details">
                         <p><strong>Duración:</strong> ${pkg.duration}</p>
                         <p><strong>Fotos:</strong> ${pkg.photos}</p>
-                        <p><strong>Entrega:</strong> ${pkg.delivery}</p>
-                        <p style="margin-top: 20px; color: var(--text-secondary); opacity: 0.8;">${pkg.details}</p>
                     </div>
                     <button type="button" class="btn btn-secondary">Seleccionar</button>
                 </div>
@@ -797,6 +707,24 @@
         }
 
         function selectPackage(id) {
+            selectedPackage = packages.find(p => p.id === id);
+            document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected'));
+            document.getElementById(`pkg-${id}`).classList.add('selected');
+            document.getElementById('packageDisplay').innerText = "Has seleccionado el Plan: " + selectedPackage.name;
+            showSection('contact');
+        }
+
+        function sendWhatsApp() {
+            const name = document.getElementById('clientName').value;
+            if (!name) {
+                alert("Por favor, ingresa tu nombre.");
+                return;
+            }
+            const packageName = selectedPackage ? selectedPackage.name : "Personalizado";
+            const message = `Hola Pablo, soy ${name}. He visto tu portafolio y me encanta tu historia. Me interesa contratar el Plan ${packageName} y me gustaría agendar una reunión para afinar los detalles de mi evento.`;
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/50497110000?text=${encodedMessage}`, '_blank');
+        }ackage(id) {
             selectedPackageId = id;
             document.querySelectorAll('.package-card').forEach(card => {
                 card.classList.remove('selected');

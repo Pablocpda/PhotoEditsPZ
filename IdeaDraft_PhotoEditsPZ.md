@@ -30,21 +30,22 @@
 - Current alternative: Autocaptura con móviles (baja calidad/distracción) o fotógrafos profesionales de alto costo.
 
 ## Core Idea
-- Solution: Servicio de fotografía apasionado y accesible que captura momentos clave para que el usuario pueda revivirlos y disfrutarlos plenamente.
+- Solution: Servicio de fotografía que no solo entrega archivos, sino experiencias. A través de landing pages dinámicas y personalizadas, Pablo narra la historia del día especial de cada cliente, permitiéndoles revivir sus emociones de forma única.
 
 ## Value Proposition
-- Why better: Ofrece fotografía de gran calidad con un presupuesto inicial bajo, permitiendo que la pasión y el deseo de mejora del fotógrafo se traduzcan en un trabajo dedicado y personalizado.
+- Why better: Mientras otros entregan carpetas de archivos, Pablo entrega una **experiencia de storytelling**. Cada cliente recibe un micrositio dedicado que resume su evento con narrativa emocional y estética premium.
 
 ## Core Flow (CRITICAL)
-1. **Usuario hace:** Entra a la web, explora el portafolio de fotos, revisa los paquetes y precios.
-2. **Sistema responde:** Muestra la disponibilidad y permite al usuario enviar una solicitud de contacto o agendar una cita.
-3. **Resultado:** Se agenda la sesión, se realiza el trabajo y el usuario recibe sus fotos de alta calidad.
+1. **Usuario conoce a Pablo:** Entra a la web, lee su historia (desde la boda de 2018) y conecta con su pasión.
+2. **Portafolio Narrativo:** El usuario ve cómo Pablo cuenta las historias de otros.
+3. **Conversión WhatsApp:** El usuario solicita una cita con un mensaje pre-llenado.
+4. **Entrega Mágica:** Al finalizar el servicio, el cliente recibe su landing page personalizada.
 
 ## Key Features (MVP)
-- Galería de Portafolio interactiva.
-- Catálogo de Paquetes y Precios.
-- Formulario de Contacto Directo.
-- Sistema de Agendamiento de Citas.
+- Landing Page Principal con Storytelling de Pablo.
+- **Generador de Historias para Clientes:** Plantilla dinámica para entregas finales.
+- Integración directa con WhatsApp con mensajes inteligentes.
+- Galería interactiva limitada (10-20 fotos por historia).
 
 ## Assumptions
 - Los usuarios priorizan la relación calidad-precio.
