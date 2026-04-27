@@ -558,7 +558,8 @@
                 <li><a onclick="showSection('contact')">Contacto</a></li>
             </ul>
         </nav>
-    </header    <main class="container">
+    </header>
+    <main class="container">
         <!-- Story Section (Home) -->
         <section id="gallery" class="active liquid-glass">
             <div class="hero reveal">
@@ -724,17 +725,6 @@
             const message = `Hola Pablo, soy ${name}. He visto tu portafolio y me encanta tu historia. Me interesa contratar el Plan ${packageName} y me gustaría agendar una reunión para afinar los detalles de mi evento.`;
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/50497110000?text=${encodedMessage}`, '_blank');
-        }ackage(id) {
-            selectedPackageId = id;
-            document.querySelectorAll('.package-card').forEach(card => {
-                card.classList.remove('selected');
-                card.querySelector('.btn-secondary').innerText = 'Seleccionar';
-            });
-            const selected = document.getElementById(`pkg-${id}`);
-            selected.classList.add('selected');
-            selected.querySelector('.btn-secondary').innerText = 'Seleccionado';
-            document.getElementById('continueBtn').style.display = 'inline-block';
-            document.getElementById('selectedPackage').value = id;
         }
 
         function showSection(sectionId) {
@@ -744,18 +734,10 @@
             setTimeout(() => {
                 const target = document.getElementById(sectionId);
                 target.classList.add('active');
-                
-                // Trigger reveal for elements in new section
                 handleReveal();
             }, 50);
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function toggleFaq(element) {
-            element.classList.toggle('active');
-            const span = element.querySelector('span');
-            span.innerText = element.classList.contains('active') ? '-' : '+';
         }
 
         function handleReveal() {
@@ -770,49 +752,12 @@
             });
         }
 
-        window.addEventListener('scroll', handleReveal);
-        window.addEventListener('load', handleReveal);
-
-        function submitForm(event) {
-            event.preventDefault();
-            if (!selectedPackageId) {
-                alert('Por favor, selecciona un paquete.');
-                showSection('packages');
-                return;
-            }
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const eventDescription = document.getElementById('eventDescription').value;
-            const pkg = packages.find(p => p.id === selectedPackageId);
-
-            const details = document.getElementById('confirmationDetails');
-            details.innerHTML = `
-                <p><strong>Cliente:</strong> ${name}</p>
-                <p><strong>Paquete:</strong> ${pkg.name} (${pkg.price})</p>
-                <p><strong>Contacto:</strong> ${phone} / ${email}</p>
-            `;
-
-            document.getElementById('confirmationModal').classList.add('active');
-        }
-
-        function resetFlow() {
-            document.getElementById('confirmationModal').classList.remove('active');
-            document.getElementById('contactForm').reset();
-            selectedPackageId = null;
-            document.querySelectorAll('.package-card').forEach(card => {
-                card.classList.remove('selected');
-                card.querySelector('.btn-secondary').innerText = 'Seleccionar';
-            });
-            document.getElementById('continueBtn').style.display = 'none';
-            showSection('gallery');
-        }
-
         let currentSlide = 0;
-        const totalSlides = 10;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
 
         function moveSlider(direction) {
+            if (totalSlides === 0) return;
             currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
             const track = document.getElementById('bodaSlider');
             track.style.transform = `translateX(-${currentSlide * 100}%)`;
@@ -821,6 +766,7 @@
         // Auto-advance slider
         setInterval(() => moveSlider(1), 5000);
 
+        window.addEventListener('scroll', handleReveal);
         window.addEventListener('DOMContentLoaded', () => {
             initPackages();
             handleReveal();
