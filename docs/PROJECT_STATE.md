@@ -2,7 +2,7 @@
 
 > Type: Dynamic (source of truth)
 > Used: /new-session, /progress, /update-context
-> Last updated: 2026-04-20 00:15
+> Last updated: 2026-04-26 21:30
 
 ---
 
@@ -18,7 +18,7 @@ Status: Phase 2 (Prototype) ✅ complete + enhanced. Apple-style prototype with 
 
 ## In Progress
 
-- [x] Instagram Integration (Experimental/Static) — Pending user assets upload.
+None — Phase 2 complete. Awaiting Phase 3 decision (user testing vs MVP direction).
 
 ---
 
@@ -39,19 +39,19 @@ None.
 
 ## Recent Changes
 
-- 2026-04-22 — Enhanced prototype with ui-ux-pro-max skill (glassmorphism sections, scroll reveal animations, improved transitions)
+- 2026-04-26 — System upgrade: Migrated Dupla-Workflow v1 → v2.3.1, created global SYSTEM.md + PROBLEMS_GLOBAL.md
+- 2026-04-26 — Security: Added CREDENTIALS.md to .gitignore, fixed HTML structure in prototype
+- 2026-04-26 — Health check: Verified system coherence (13 skills, 3 hooks, all docs present)
+- 2026-04-22 — Enhanced prototype with ui-ux-pro-max skill (glassmorphism sections, scroll reveal animations)
 - 2026-04-20 — Phase 2 prototype completed with premium Apple-style design and full core flow
-- 2026-04-20 — Applied UI/UX Pro Max principles (glassmorphism → Apple minimalism)
-- 2026-04-20 — Tested prototype: gallery, packages, contact form, booking confirmation working
-- 2026-04-19 — Initialized project structure (ROADMAP, ARCHITECTURE, PROJECT_STATE, PROBLEMS)
 
 ---
 
 ## Sync Status
 
 - Branch: work/planning
-- Compared to master: ahead by 4 commits (Phase 2 enhanced + ready for Phase 3)
-- Ready to merge: Not yet (Phase 3 technical direction pending)
+- Compared to master: ahead by 6 commits (Phase 2 complete + global system setup + security fixes)
+- Ready to merge: Not yet (Phase 3 decision pending: user testing vs MVP build)
 
 ---
 
