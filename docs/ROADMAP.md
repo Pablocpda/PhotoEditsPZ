@@ -33,9 +33,9 @@ Checkpoint:
 
 ---
 
-### 3. Technical Direction
-- Choose stack: Next.js/Astro + backend API
-- Define approach: Static site for portfolio + Node backend for form + scheduling integration (Calendly/Acuity)
+### 3. Technical Direction (Confirmed)
+- Choose stack: Next.js + Tailwind + Supabase
+- Define approach: Dynamic portfolio with Supabase Storage + Edge Functions for contact notifications.
 
 ---
 

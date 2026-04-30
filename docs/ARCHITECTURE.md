@@ -38,17 +38,18 @@ User → UI (Gallery/Packages) → Logic (selection) → Mock Response (confirma
 Real system with persistent data and integrations
 
 ### Stack
-- Frontend: Next.js or Astro with React/Svelte
-- Backend: Node.js Express API
-- Database: PostgreSQL or MongoDB (contact requests, session logs)
-- Scheduling: Calendly/Acuity Scheduling API integration
-- Storage: Cloud CDN for portfolio images (Cloudinary, AWS S3)
+- Frontend: Next.js (App Router) + Tailwind CSS
+- Backend/DB: Supabase (Auth, PostgreSQL, Storage, Edge Functions)
+- Scheduling: Calendly/Acuity Scheduling API integration (or Supabase-driven custom logic)
+- Storage: Supabase Storage (CDN optimized)
 
 ### Components
 - Frontend: Gallery, packages, contact form, booking confirmation
-- Backend/API: Contact form processor, appointment slots, email notifications
-- Database: Contacts, packages, availability, bookings
-- Services: Email notifications, payment (future), scheduling API
+- Backend (Supabase): 
+    - `galleries` & `packages` tables
+    - `contact_requests` table with Realtime/Hooks
+    - Edge Functions for WhatsApp/Email triggers
+- Storage: CDN for high-resolution portfolio assets
 
 ### Data Flow
 User → Frontend (Gallery/Contact) → Backend API (validation/processing) → Database (store) → Scheduling API (calendar) → Notification Service (email)

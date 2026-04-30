@@ -12,22 +12,24 @@ Build interactive photography portfolio website with booking system to capture a
 
 ---
 
-Status: Phase 2 (Prototype) ✅ complete + enhanced. Apple-style prototype with professional design, smooth interactions, responsive gallery, and ui-ux-pro-max enhancements (glassmorphism sections, scroll reveal animations). Core flow validated: gallery → packages → contact → booking confirmation. Ready for Phase 3.
+Status: Phase 3 (Development) 🏗️ in progress. Transitioning from static prototype to Next.js + Supabase MVP. Apple-style design system documented. Core flow validated.
 
 ---
 
 ## In Progress
 
-None — Phase 2 complete. Awaiting Phase 3 decision (user testing vs MVP direction).
+Phase 3 MVP initialization. Awaiting Next.js + Supabase project scaffold + component migration.
 
 ---
 
 ## Next Steps
 
-- [ ] **Must:** Decision: Test with real users OR proceed directly to Phase 3 (MVP technical direction)
-- [ ] **Should:** Document design decisions (Apple-style, color system, typography choices)
-- [ ] **Could:** Add form backend integration (Formspree or similar) for prototype feedback
-- [ ] **Could:** Plan Phase 3 stack (Next.js + Supabase + Tailwind confirmed)
+- [ ] **Must:** Initialize Next.js project + Supabase schema
+- [ ] **Should:** Migrate static HTML → Next.js App Router components
+- [ ] **Should:** Convert CSS to Tailwind (preserve glassmorphism + animations)
+- [ ] **Could:** Set up Supabase Storage for high-res portfolio assets
+- [ ] **Done:** Phase 3 direction decision (MVP) ✅
+- [ ] **Done:** Design system documented ✅
 
 ---
 
@@ -39,19 +41,19 @@ None.
 
 ## Recent Changes
 
+- 2026-04-29 — Confirmed Phase 3 direction: Next.js + Supabase MVP (docs updated: ARCHITECTURE, ROADMAP, DESIGN_DECISIONS)
+- 2026-04-29 — Created DESIGN_DECISIONS.md (Apple-style principles, tokens, glassmorphism, storytelling flow, Phase 3 evolution plan)
 - 2026-04-26 — System upgrade: Migrated Dupla-Workflow v1 → v2.3.1, created global SYSTEM.md + PROBLEMS_GLOBAL.md
 - 2026-04-26 — Security: Added CREDENTIALS.md to .gitignore, fixed HTML structure in prototype
 - 2026-04-26 — Health check: Verified system coherence (13 skills, 3 hooks, all docs present)
-- 2026-04-22 — Enhanced prototype with ui-ux-pro-max skill (glassmorphism sections, scroll reveal animations)
-- 2026-04-20 — Phase 2 prototype completed with premium Apple-style design and full core flow
 
 ---
 
 ## Sync Status
 
 - Branch: work/planning
-- Compared to master: ahead by 6 commits (Phase 2 complete + global system setup + security fixes)
-- Ready to merge: Not yet (Phase 3 decision pending: user testing vs MVP build)
+- Compared to main: ahead by 6 commits (ready to merge after Phase 3 init)
+- Status: ACTIVE (Phase 3 MVP in progress)
 
 ---
 
