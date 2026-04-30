@@ -33,9 +33,9 @@ Checkpoint:
 
 ---
 
-### 3. Technical Direction (Confirmed)
-- Choose stack: Next.js + Tailwind + Supabase
-- Define approach: Dynamic portfolio with Supabase Storage + Edge Functions for contact notifications.
+### 3. Technical Direction (Confirmed) ✅
+- [x] Choose stack: Next.js + Tailwind + Supabase
+- [x] Define approach: Dynamic portfolio with Supabase Storage + Edge Functions for contact notifications.
 
 ---
 
