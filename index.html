@@ -26,6 +26,22 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        .grain-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        :root {
+            --margin-page: 24px;
+        }
+        @media (min-width: 768px) {
+            :root {
+                --margin-page: 64px;
+            }
+        }
     </style>
 <script id="tailwind-config">
         tailwind.config = {
@@ -89,8 +105,8 @@
               },
               "spacing": {
                       "unit": "8px",
-                      "section-gap": "160px",
-                      "margin-page": "64px",
+                      "section-gap": "100px",
+                      "margin-page": "var(--margin-page)",
                       "gutter": "24px"
               },
               "fontFamily": {
@@ -113,21 +129,186 @@
           },
         }
       </script>
+<!-- Calendly link widget begin -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script type="text/javascript">
+    function openBooking() {
+        Calendly.initPopupWidget({url: 'https://calendly.com/pablocpda/sesion-fotografica'});
+        return false;
+    }
+
+    function scrollGallery(direction) {
+        const slider = document.getElementById('wedding-slider');
+        const scrollAmount = 400; // Ancho de una foto aprox.
+        slider.scrollBy({
+            left: direction * scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+
+    function openAlbum(albumName) {
+        const modal = document.getElementById('album-modal');
+        const title = document.getElementById('modal-title');
+        const container = document.getElementById('modal-content');
+        
+        const albums = {
+            'eduardo': {
+                title: 'Eduardo & Annet',
+                content: [
+                    { type: 'single', src: 'assets/wedding_10.jpg' },
+                    { type: 'text-center', content: 'Hay instantes donde el tiempo parece detenerse. No es solo una ceremonia; es la promesa de una vida juntos.' },
+                    { type: 'double', src1: 'assets/wedding_1.jpg', src2: 'assets/wedding_3.jpg' },
+                    { type: 'text-side', side: 'left', text: 'Caminar hacia el compromiso es dar el primer paso hacia una historia sin final.', src: 'assets/wedding_12.jpg' }
+                ]
+            },
+            'alex': {
+                title: 'Alex & Edna',
+                content: [
+                    { type: 'single', src: 'assets/wedding_15.jpg' },
+                    { type: 'text-center', content: 'La elegancia se encuentra en la sobriedad y en la mirada cómplice.' },
+                    { type: 'double', src1: 'assets/wedding_5.jpg', src2: 'assets/wedding_11.jpg' },
+                    { type: 'single', src: 'assets/wedding_13.jpg' }
+                ]
+            },
+            'angel': {
+                title: 'Angel & Ingrid',
+                content: [
+                    { type: 'single', src: 'assets/wedding_9.jpg' },
+                    { type: 'text-side', side: 'right', text: 'Bajo el destello de las luces, comienza su mayor aventura.', src: 'assets/wedding_2.jpg' }
+                ]
+            },
+            'jorge': {
+                title: 'Jorge & Kathia',
+                content: [
+                    { type: 'single', src: 'assets/wedding_6.jpg' },
+                    { type: 'text-center', content: 'Caminar juntos es el destino que siempre soñaron.' }
+                ]
+            },
+            'diego': {
+                title: 'Diego & Eunice',
+                content: [
+                    { type: 'single', src: 'assets/wedding_4.jpg' },
+                    { type: 'text-center', content: 'La felicidad compartida es la base de cada gran recuerdo.' }
+                ]
+            },
+            'alejandro': {
+                title: 'Alejandro & Raquel',
+                content: [
+                    { type: 'double', src1: 'assets/wedding_8.jpg', src2: 'assets/wedding_14.jpg' },
+                    { type: 'text-center', content: 'Dos almas que se encuentran para escribir su propio capítulo.' }
+                ]
+            },
+            'jair': {
+                title: 'Jair & Marian',
+                content: [
+                    { type: 'single', src: 'assets/wedding_7.jpg' },
+                    { type: 'text-center', content: 'El amor reside en la calidez de un abrazo sincero.' }
+                ]
+            }
+        };
+
+        const data = albums[albumName] || albums['eduardo']; // Por ahora usamos eduardo de base
+        title.innerText = data.title;
+        
+        container.innerHTML = data.content.map(item => {
+            if (item.type === 'single') {
+                return `
+                    <div class="w-full max-w-md mx-auto mb-20 opacity-0 translate-y-12 transition-all duration-1000 storytelling-item">
+                        <img src="${item.src}" class="w-full rounded-2xl shadow-2xl">
+                    </div>
+                `;
+            } else if (item.type === 'double') {
+                return `
+                    <div class="w-full max-w-2xl mx-auto mb-20 flex flex-col md:flex-row gap-4 opacity-0 translate-y-12 transition-all duration-1000 storytelling-item">
+                        <div class="flex-1"><img src="${item.src1}" class="w-full h-64 md:h-full object-cover rounded-2xl shadow-xl"></div>
+                        <div class="flex-1 md:mt-8"><img src="${item.src2}" class="w-full h-64 md:h-full object-cover rounded-2xl shadow-xl"></div>
+                    </div>
+                `;
+            } else if (item.type === 'text-side') {
+                const isLeft = item.side === 'left';
+                return `
+                    <div class="w-full max-w-2xl mx-auto mb-20 flex flex-col ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 opacity-0 translate-y-12 transition-all duration-1000 storytelling-item">
+                        <div class="flex-1 text-center ${isLeft ? 'md:text-left' : 'md:text-right'}">
+                            <p class="font-display-xl text-lg text-white/70 italic leading-relaxed font-light">"${item.text}"</p>
+                        </div>
+                        <div class="flex-1 w-full">
+                            <img src="${item.src}" class="w-full rounded-2xl shadow-2xl">
+                        </div>
+                    </div>
+                `;
+            } else {
+                return `
+                    <div class="w-full max-w-md mx-auto mb-20 px-4 text-center opacity-0 translate-y-12 transition-all duration-1000 storytelling-item">
+                        <p class="font-display-xl text-2xl text-white/90 italic leading-relaxed font-light">"${item.content}"</p>
+                    </div>
+                `;
+            }
+        }).join('') + `
+            <div class="mt-20 pb-32 text-center opacity-0 translate-y-12 transition-all duration-1000 storytelling-item">
+                <button onclick="closeAlbum()" class="px-16 py-5 bg-white text-black font-black uppercase tracking-widest rounded-full hover:bg-primary-container hover:text-white transition-all transform hover:scale-105 shadow-2xl">
+                    Cerrar Historia
+                </button>
+            </div>
+        `;
+
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+
+        setTimeout(() => {
+            const items = document.querySelectorAll('.storytelling-item');
+            items.forEach((item, i) => {
+                setTimeout(() => {
+                    item.classList.remove('opacity-0', 'translate-y-12');
+                }, i * 350);
+            });
+        }, 100);
+    }
+
+    function closeAlbum() {
+        const modal = document.getElementById('album-modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+    }
+
+    function sendWhatsApp() {
+        const name = document.getElementById('client-name').value;
+        const event = document.getElementById('event-type').value;
+        const pack = document.getElementById('package-interest').value;
+        const phone = "50497110000"; // Ejemplo: 50499887766
+
+        if(!name || !event) {
+            alert("Por favor completa tu nombre y el evento que deseas capturar.");
+            return;
+        }
+
+        const message = `Hola Pablo! Mi nombre es ${name}. Me gustaría que captures mi evento de: ${event}. Estoy interesado en el paquete: ${pack || 'A definir'}.`;
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+</script>
+<!-- Calendly link widget end -->
 </head>
 <body class="bg-background font-body-md text-on-surface overflow-x-hidden">
 <!-- TopNavBar -->
 <nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl rounded-full border border-white/15 bg-black/60 backdrop-blur-[20px] shadow-2xl shadow-black/50 flex justify-between items-center px-8 h-14 z-50">
-<div class="text-xl font-bold tracking-tighter text-white">PhotoEditsPZ</div>
+<div class="flex items-center gap-3">
+    <img src="assets/firma.png" class="h-8 w-auto" alt="Firma PZ"/>
+    <div class="text-xl font-bold tracking-tighter text-white">PhotoEditsPZ</div>
+</div>
 <div class="hidden md:flex gap-8 items-center"><a class="font-inter text-sm font-medium tracking-tight text-white border-b border-white pb-0.5 hover:text-white transition-all duration-400 ease-in-out" href="#work">Trabajos</a>
 <a class="font-inter text-sm font-medium tracking-tight text-white/60 hover:text-white transition-all duration-400 ease-in-out" href="#about">Sobre Mí</a>
 <a class="font-inter text-sm font-medium tracking-tight text-white/60 hover:text-white transition-all duration-400 ease-in-out" href="#pricing">Planes</a>
 <a class="font-inter text-sm font-medium tracking-tight text-white/60 hover:text-white transition-all duration-400 ease-in-out" href="#contact">Contacto</a></div>
-<button class="bg-primary-container text-on-primary-container px-5 py-2 rounded-full font-inter text-sm font-medium scale-95 active:scale-90 transition-transform">Comenzar</button>
+<button onclick="openBooking()" class="bg-primary-container text-on-primary-container px-5 py-2 rounded-full font-inter text-sm font-medium scale-95 active:scale-90 transition-transform">Agendar Cita</button>
 </nav>
 <!-- Hero Section -->
 <section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
 <div class="absolute inset-0 z-0">
-<img class="w-full h-full object-cover brightness-50" data-alt="A dramatic black and white photograph of the Trevi Fountain in Rome at dusk, with a crowd of people in the foreground looking towards a couple being photographed. The lighting is cinematic with warm streetlamps contrasting against the moody evening sky." src="https://lh3.googleusercontent.com/aida/ADBb0uggNytKIj3fzfDXk1zyGeEiaymtvUs1UwR54YminrF1LAsCpEKYrgThjJP_pQei88DrLPiorm_kzbTd-Lj1-zqQ11S_U_O3khxPQzVhyN5uyymywX7XwqL1K736RjeHliHGreeH6h9S9epfY2t2H9J2JSowrDSIooqyJImvISHuS3BwFYWQ8M-nb7JZG52Nr_m-T9RQSIfmAgYlNHjCvlnYOVpeUTaWO_-msJqWxedvAKccmhp6GTXpBW8WTFwqqSDMPlp66p_j"/>
+<div class="grain-overlay"></div>
+<img class="w-full h-full object-cover brightness-[0.45] contrast-[1.15] saturate-0" style="image-rendering: -webkit-optimize-contrast;" data-alt="Fuente de Trevi cinemática" src="assets/hero_background.jpg"/>
 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black"></div>
 </div>
 <div class="relative z-10 text-center px-4">
@@ -137,10 +318,10 @@
 </section>
 <!-- About Me Sub-section -->
 <section class="py-section-gap px-margin-page bg-black" id="about">
-<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-gutter items-center">
-<div class="relative group">
+<div class="max-w-7xl mx-auto grid md:grid-cols-[1fr_2fr] gap-gutter items-center">
+<div class="relative group max-w-[322px] mx-auto md:mx-0">
 <div class="aspect-[4/5] overflow-hidden rounded-xl border border-white/10">
-<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A professional close-up portrait of a photographer in a dark, moody studio environment. The subject is holding a vintage camera, with dramatic Rembrandt lighting highlighting their features against a deep black background. The image has a grainy, film-like texture and high-contrast aesthetic, echoing the premium photography brand's focus on artistry and technical precision." src="https://lh3.googleusercontent.com/aida/ADBb0uhZGa0AMJ7_if4d4ouos6zPsY74vo9n5N8HUTFgSVr9E_2QDlI5xpwWgfa2OFbARDtFNoV9AErsLIdtpi0-MhAnkQnnAb6U39Gz-XMhca3FD58Ffq5mT6zU35xDx76Nj5hRPwo3n4kt0azmoPpXrcVepJyiZnlJmgMknsbfIdWJRIPatmN06gPEYIG-wJtPQ0boAVEEkrGmTCzlMsS4ms5dTS3FCfifnbtptDnnzptCegSt4PCePGSVFOvCFqj-PWdQSvGB902KBg"/>
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 grayscale contrast-110" data-alt="Retrato profesional de Pablo" src="assets/pablo_portrait.jpg"/>
 </div>
 </div>
 <div class="space-y-8"><span class="font-label-caps text-label-caps text-primary">THE VISIONARY</span><h2 class="font-headline-lg text-headline-lg text-white">Hola, soy Pablo.</h2><p class="font-body-lg text-body-lg text-white/60">Desde pequeño siempre tuve un gusto especial por las fotos, pero fue en 2018 cuando todo cambió. Estaba en la boda de unos amigos y sentí la necesidad imperiosa de capturar lo que estaba pasando. Logré una fotografía que a ellos les encantó; al ver su reacción, sentí una emoción completamente nueva. Desde ese día, mi pasión no ha dejado de crecer. Hoy, mi misión es entregarte esa misma emoción a ti, contando la historia de tu día especial de una manera única.</p></div>
@@ -154,34 +335,94 @@
 <h2 class="font-headline-lg text-headline-lg text-white">Bodas</h2>
 </div>
 <div class="hidden md:flex gap-4">
-<button class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:border-white transition-colors">
+<button onclick="scrollGallery(-1)" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:border-white transition-colors">
 <span class="material-symbols-outlined text-white">chevron_left</span>
 </button>
-<button class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:border-white transition-colors">
+<button onclick="scrollGallery(1)" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:border-white transition-colors">
 <span class="material-symbols-outlined text-white">chevron_right</span>
 </button>
 </div>
 </div>
-<div class="flex gap-gutter overflow-x-auto hide-scrollbar px-margin-page snap-x">
-<div class="flex-none w-[400px] aspect-[3/4] snap-center group relative overflow-hidden rounded-xl">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A candid wedding photograph showing a bride and groom laughing together during a golden hour outdoor reception. The light is warm and honey-toned, creating long shadows and a romantic, airy mood. The background is a soft-focus garden, maintaining the high-end minimalist focus on the subjects' genuine emotional connection." src="https://lh3.googleusercontent.com/aida/ADBb0uh3hywHJ2py6crH4m4_O7EqzxgH2A6eeBF9-MP-9-0w31rvj19MS-dsLvO4XVDf_LlDUxw7YkmEdY7BG-U96rMRXxjw2TLtB8bJUnkOpJFhiTdoc6IxQHyFkbreJjrs_dCTTfHmS1Zg386wEP-faD2hDnWihXGPV5pF35B2PsKgSSrQkGwFyFGnB1WW1AHNA3kmPb5PyyDf2iJ3ETUT2CLxkAfoeOwR52NcsTywzC7qSkKDALMx4Cjij01I2-3AO5voK9Pwox33MA"/>
-<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8 backdrop-blur-[2px]">
-<span class="font-label-caps text-label-caps text-white">GALERÍA</span>
+<div id="wedding-slider" class="flex gap-gutter overflow-x-auto hide-scrollbar px-margin-page snap-x">
+
+<!-- Eduardo & Annet -->
+<div onclick="openAlbum('eduardo')" class="flex-none w-[315px] aspect-[4/5] snap-center group relative overflow-hidden rounded-2xl border-2 border-primary/20 cursor-pointer transition-all hover:border-primary/50">
+    <img class="w-full h-full object-cover brightness-50 group-hover:scale-105 transition-transform duration-700" src="assets/wedding_10.jpg"/>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
+        <span class="font-label-caps text-white/60 mb-2 text-[8px] tracking-[0.3em]">COLECCIÓN</span>
+        <h3 class="font-display-xl text-2xl text-white mb-3">Eduardo & Annet</h3>
+        <div class="w-6 h-0.5 bg-primary mb-3 transition-all group-hover:w-12"></div>
+        <p class="font-body-md text-white/40 italic text-[10px]">Explorar historia</p>
+    </div>
 </div>
+
+<!-- Alex & Edna -->
+<div onclick="openAlbum('alex')" class="flex-none w-[315px] aspect-[4/5] snap-center group relative overflow-hidden rounded-2xl border-2 border-primary/20 cursor-pointer transition-all hover:border-primary/50">
+    <img class="w-full h-full object-cover brightness-50 group-hover:scale-105 transition-transform duration-700" src="assets/wedding_15.jpg"/>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
+        <span class="font-label-caps text-white/60 mb-2 text-[8px] tracking-[0.3em]">COLECCIÓN</span>
+        <h3 class="font-display-xl text-2xl text-white mb-3">Alex & Edna</h3>
+        <div class="w-6 h-0.5 bg-primary mb-3 transition-all group-hover:w-12"></div>
+        <p class="font-body-md text-white/40 italic text-[10px]">Explorar historia</p>
+    </div>
 </div>
-<div class="flex-none w-[600px] aspect-[16/9] snap-center group relative overflow-hidden rounded-xl">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A wide cinematic shot of a wedding ceremony in an ancient stone cathedral. The lighting is dramatic, with shafts of light piercing through stained glass windows onto the couple. The image features a rich, dark color palette with deep blacks and vibrant warm highlights, evoking a sense of timeless elegance and professional photographic artistry." src="https://lh3.googleusercontent.com/aida/ADBb0uhExeMhGR_WodRKM_0l8Ece-gpnPKPqUWcpH0oTkjQv79QWyAUW9lZm09uwuRxTueXKbQmp9ExwCTKJQH8x82P8tFnm0JobAz8ViZNB6p9fRL62q5Dv3uTdFOmGtbLRsa44oJjm00E5NEoLZpeKueG-EDUzEif2oAtCfFbV_NSsUxqV-BX0ge3Koj24IabW0iLG4106ugegYDJ_f5IUddINOzS3nVq42zm8uQnGkyBjcly0kAEOsEvEQQlsRhsdfw1Tz08IgXo4"/>
-<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8 backdrop-blur-[2px]">
-<span class="font-label-caps text-label-caps text-white">GALERÍA</span>
+
+<!-- Angel & Ingrid -->
+<div onclick="openAlbum('angel')" class="flex-none w-[315px] aspect-[4/5] snap-center group relative overflow-hidden rounded-2xl border-2 border-primary/20 cursor-pointer transition-all hover:border-primary/50">
+    <img class="w-full h-full object-cover brightness-50 group-hover:scale-105 transition-transform duration-700" src="assets/wedding_9.jpg"/>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
+        <span class="font-label-caps text-white/60 mb-2 text-[8px] tracking-[0.3em]">COLECCIÓN</span>
+        <h3 class="font-display-xl text-2xl text-white mb-3">Angel & Ingrid</h3>
+        <div class="w-6 h-0.5 bg-primary mb-3 transition-all group-hover:w-12"></div>
+        <p class="font-body-md text-white/40 italic text-[10px]">Explorar historia</p>
+    </div>
 </div>
+
+<!-- Jorge & Kathia -->
+<div onclick="openAlbum('jorge')" class="flex-none w-[315px] aspect-[4/5] snap-center group relative overflow-hidden rounded-2xl border-2 border-primary/20 cursor-pointer transition-all hover:border-primary/50">
+    <img class="w-full h-full object-cover brightness-50 group-hover:scale-105 transition-transform duration-700" src="assets/wedding_6.jpg"/>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
+        <span class="font-label-caps text-white/60 mb-2 text-[8px] tracking-[0.3em]">COLECCIÓN</span>
+        <h3 class="font-display-xl text-2xl text-white mb-3">Jorge & Kathia</h3>
+        <div class="w-6 h-0.5 bg-primary mb-3 transition-all group-hover:w-12"></div>
+        <p class="font-body-md text-white/40 italic text-[10px]">Explorar historia</p>
+    </div>
 </div>
-<div class="flex-none w-[400px] aspect-[3/4] snap-center group relative overflow-hidden rounded-xl">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A minimalist wedding detail shot showing two hands entwined, focusing on the texture of the lace dress and the metallic gleam of the rings. The shallow depth of field creates a beautiful bokeh background of soft white flowers. The image is clean, bright, and sophisticated, reflecting a modern Apple-inspired minimalist aesthetic." src="https://lh3.googleusercontent.com/aida/ADBb0uhAWaPytB97vqqOnS_8eoL8g-mltqYIkvwV-lplSjZJSvM6HXq6ba2zviW31S9kKMMIZsPHbYoK4TFlHynIt4LMdSrqVevpFzODwHGs7Zq9yT8wCnqPdpQDPd2I39QNGLpqLGevFzMd73zqosNb7qYV3AAgKogUEpRA2prDhnxtoDiTHW8YSyzgYXJtwkdoZZ9GxZ9kSrYolcZMaForxlfg-C-dTpKuE4WinjukAz1PytEUWj9IIIIqtOC6Lqj2GLoCKZC_kbFJ6Q"/>
-<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8 backdrop-blur-[2px]">
-<span class="font-label-caps text-label-caps text-white">GALERÍA</span>
+
+<!-- Diego & Eunice -->
+<div onclick="openAlbum('diego')" class="flex-none w-[315px] aspect-[4/5] snap-center group relative overflow-hidden rounded-2xl border-2 border-primary/20 cursor-pointer transition-all hover:border-primary/50">
+    <img class="w-full h-full object-cover brightness-50 group-hover:scale-105 transition-transform duration-700" src="assets/wedding_4.jpg"/>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
+        <span class="font-label-caps text-white/60 mb-2 text-[8px] tracking-[0.3em]">COLECCIÓN</span>
+        <h3 class="font-display-xl text-2xl text-white mb-3">Diego & Eunice</h3>
+        <div class="w-6 h-0.5 bg-primary mb-3 transition-all group-hover:w-12"></div>
+        <p class="font-body-md text-white/40 italic text-[10px]">Explorar historia</p>
+    </div>
 </div>
+
+<!-- Alejandro & Raquel -->
+<div onclick="openAlbum('alejandro')" class="flex-none w-[315px] aspect-[4/5] snap-center group relative overflow-hidden rounded-2xl border-2 border-primary/20 cursor-pointer transition-all hover:border-primary/50">
+    <img class="w-full h-full object-cover brightness-50 group-hover:scale-105 transition-transform duration-700" src="assets/wedding_8.jpg"/>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
+        <span class="font-label-caps text-white/60 mb-2 text-[8px] tracking-[0.3em]">COLECCIÓN</span>
+        <h3 class="font-display-xl text-2xl text-white mb-3">Alejandro & Raquel</h3>
+        <div class="w-6 h-0.5 bg-primary mb-3 transition-all group-hover:w-12"></div>
+        <p class="font-body-md text-white/40 italic text-[10px]">Explorar historia</p>
+    </div>
 </div>
-<div class="flex-none w-[600px] aspect-[16/9] snap-center group relative overflow-hidden rounded-xl"><img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Cinematic wedding moment" src="https://lh3.googleusercontent.com/aida/ADBb0uhOgXAVhRP-lQWIfA6Inic9Yg4hl1fYqptinOgg5ttveZktBHz39PyDUra9QAuFV_rl1caEO8YQTIfVlwO5sNHFA6rDxzRDO7mPIN5P0tqbp6xKyd7OR-UanCeM07rccqQs762HbHtuWlHR88_GGc9baSz8hUISH6mlMDkBOJwTWAixI4fn-mJa-xAmI7X6l1S2T1IYvPfKoUyZDtRdlZEWNRF-i9t5uI3V8rUic2M-0Q48FsYGB_EQJnRZ-IPGTVqbBHuTJAtP7Q"/><div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8 backdrop-blur-[2px]"><span class="font-label-caps text-label-caps text-white">GALERÍA</span></div></div><div class="flex-none w-[400px] aspect-[3/4] snap-center group relative overflow-hidden rounded-xl"><img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Intimate wedding detail" src="https://lh3.googleusercontent.com/aida/ADBb0uj3NECvNCuXcormR1-C780rsi1xgsNdEMxknxkEkiiZ2_TKpXKRsyOhrtVvJ-vRCjbwT9HvwfpM9KE82ia8vH6KE2D8tb923uPG6Jfh90TMTIvvhkAq1Ty90smqg1dLKpkrRCWFY9DyLzFQE8IDKKrURMEH85UuDCi8omne-SuDIag2nesYPBP8WOWH28CX7OJNwd9rgItJXFz7pCH2MpL95pdhhjN0nxq3yi8kw5-gOLAGeTN6TPATcL-3vZilTZzbv3lZazRUSg"/><div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8 backdrop-blur-[2px]"><span class="font-label-caps text-label-caps text-white">GALERÍA</span></div></div></div>
+
+<!-- Jair & Marian -->
+<div onclick="openAlbum('jair')" class="flex-none w-[315px] aspect-[4/5] snap-center group relative overflow-hidden rounded-2xl border-2 border-primary/20 cursor-pointer transition-all hover:border-primary/50">
+    <img class="w-full h-full object-cover brightness-50 group-hover:scale-105 transition-transform duration-700" src="assets/wedding_7.jpg"/>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
+        <span class="font-label-caps text-white/60 mb-2 text-[8px] tracking-[0.3em]">COLECCIÓN</span>
+        <h3 class="font-display-xl text-2xl text-white mb-3">Jair & Marian</h3>
+        <div class="w-6 h-0.5 bg-primary mb-3 transition-all group-hover:w-12"></div>
+        <p class="font-body-md text-white/40 italic text-[10px]">Explorar historia</p>
+    </div>
+</div>
+
+</div>
 </section>
 <!-- Recent Moments (Grid) -->
 <section class="py-section-gap px-margin-page bg-black">
@@ -189,21 +430,23 @@
 <span class="font-label-caps text-label-caps text-primary">TRABAJOS RECIENTES</span>
 <h2 class="font-headline-lg text-headline-lg text-white">Momentos</h2>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-gutter"><div class="aspect-[3/4] glass-card rounded-xl overflow-hidden group">
-<img alt="Arquitectura histórica al atardecer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/ADBb0uj7VtHKrOmDKkEmirtybkC-5Dl4qnR5xwkMznpA6QrbNXs6BmE9LcH5tyHO5wvhczsaZDU0dEFI7ZW0LHZHIUmwYXEHlbYr4BnkzUgl7FpVVrbjAXFtZlZ64jPDXnJQp1JJFFOwig0m5JBaNYQ_WbWteeeJjcdmiLEQ6D-vd8jxfTCp60m1pctQYRj4gAbcVyaTVuyXQ6U27K1dkCSpH-79HeTaGqxIAf8RNQz0PGZxvjzu2GvGMURFNvJ3E43qx8LgxmOXHPVk5g"/>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-gutter">
+<div class="aspect-[3/4] glass-card rounded-xl overflow-hidden group">
+<img alt="Tejados europeos al atardecer con la luna" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/moment_1.jpg"/>
 </div>
 <div class="aspect-[3/4] glass-card rounded-xl overflow-hidden group">
-<img alt="Detalle de cúpula de catedral" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/ADBb0ug3smof_ywe-mF5ZJ-g_2Y5Q2ylYLeZllcSvjSE23x71jQcrTxEhq_G4IJcJxq5_k2EjnDxabpMCVe5UbAQcboRa5s6Ayo334ihxdp7XDs9KLujm3i2xpLbMqL-UsTdw8lqj1CIlVQeVtV0FoBIXbRM7BI2EBipffTCGYTcTjI_CFKqnXko5WAQxnZ1orkBbxISm-x-IGBZaLqxsSttzo-HSSIpZXmwxVSnJAadUi4KiHJFiErBplVZGd8isrpV-h3fLApD7OV4aQ"/>
+<img alt="Cúpula de catedral en Italia" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/moment_2.jpg"/>
 </div>
 <div class="aspect-[3/4] glass-card rounded-xl overflow-hidden group">
-<img alt="Exposición de autos clásicos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/ADBb0uh33HeFUmPQHo20cgd2j55Ulo9FdwESvAlwJSWdwzNWVSubJPaDUECFJcC56U8_dH3rxtQTMj-o3DQo1U3CHdxVjIrH-GqJFj0FLlwhOwF-0kW6W-3xathk9MgwE9vQ1I2t7Df_JBgHYfGKDncdveytIWwDv4PfDU9vAG_ChlDp7XBLU43muj32hBDE3UGvP6u7Zx-veNhUJt_4NvS0jwtUyQynQjTKbaqjNohcx3RMvOPbrSGNqxXdc9ypdQyoN-nU2CRrvAbA9w"/>
+<img alt="Exhibición de autos clásicos en Europa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/moment_3.jpg"/>
 </div>
 <div class="aspect-[3/4] glass-card rounded-xl overflow-hidden group">
-<img alt="Interior de centro comercial de lujo con tragaluz" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/ADBb0uiD6gX0MBcPcQPnMgc5VtjEFU2mjAz3oANcFhXzxaRmW6srfE3dElyHA5Xn93kq3POV7euvoLmFph9l8r9_dN2qWSJ9DdFLw9uk2INbmtBYes9G_JUauULg986-vMc63jtVHRLG3fNWrTINT2Wrrl_kXj-0uqTR0DH1WoB0qsAbvwDTefhgESORL3hk6kfqBecZAF0EoemsTJHc0qMRLcD9DQq7--dHTRDu1APTDp3JD4Tchi6fibwF-aE4YnwvXXX4hwVjn2AIEg"/>
+<img alt="Interior de centro comercial de lujo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/moment_4.jpg"/>
 </div>
 <div class="aspect-[3/4] glass-card rounded-xl overflow-hidden group">
-<img alt="Edificio europeo clásico bajo cielo azul" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/ADBb0ui2iSiWILDRS88EZhl_LwjLCNE2AqwluooTEAmG6oRaqyiVZW2_MEQrmNU68ppkyEJ1k1HZ7w2xMQFbR9v87pj6pqPmq8q-BWjPApyxDz2XwUasUa46xrj8_C19O1wjuWEyeJOvUCMh8zB6SARTK1cuv_F4S7Xx4s82CKqJePj9eNTY63G0c8q6qzfuxGneE_5sOeWWN5t-G7xlhU9bcZxfcIFpagJCKDGMe0Ik3Qu6qwkOigpvODzZsnTm2bIf-eirkPtbPZso"/>
-</div></div>
+<img alt="Arquitectura europea clásica" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/moment_5.jpg"/>
+</div>
+</div>
 </section>
 <!-- Process: Workflow -->
 <section class="py-section-gap px-margin-page bg-surface-container-lowest">
@@ -225,13 +468,13 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter max-w-7xl mx-auto">
 <!-- Basic -->
-<div class="glass-card p-8 rounded-3xl border border-white/5 hover:border-white/20 transition-all flex flex-col"><span class="font-label-caps text-label-caps text-white/40 mb-2">SENCILLO</span><div class="text-3xl font-bold text-white mb-6">L 1,000</div><ul class="space-y-4 mb-8 flex-grow"><li class="flex items-center gap-2 text-white/60 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 1 hora</li><li class="flex items-center gap-2 text-white/60 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 10+ fotos</li></ul><button class="w-full py-3 rounded-full border border-white/20 text-white font-medium hover:bg-white hover:text-black transition-all">Seleccionar</button></div>
+<div class="glass-card p-8 rounded-3xl border border-white/5 hover:border-white/20 transition-all flex flex-col"><span class="font-label-caps text-label-caps text-white/40 mb-2">SENCILLO</span><div class="text-3xl font-bold text-white mb-6">L 1,000</div><ul class="space-y-4 mb-8 flex-grow"><li class="flex items-center gap-2 text-white/60 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 1 hora</li><li class="flex items-center gap-2 text-white/60 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 10+ fotos</li></ul><button onclick="openBooking()" class="w-full py-3 rounded-full border border-white/20 text-white font-medium hover:bg-white hover:text-black transition-all">Seleccionar</button></div>
 <!-- Standard -->
-<div class="glass-card p-8 rounded-3xl border border-white/5 hover:border-white/20 transition-all flex flex-col"><span class="font-label-caps text-label-caps text-white/40 mb-2">ESTÁNDAR</span><div class="text-3xl font-bold text-white mb-6">L 4,000</div><ul class="space-y-4 mb-8 flex-grow"><li class="flex items-center gap-2 text-white/60 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 5 horas</li><li class="flex items-center gap-2 text-white/60 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 70+ fotos</li></ul><button class="w-full py-3 rounded-full border border-white/20 text-white font-medium hover:bg-white hover:text-black transition-all">Seleccionar</button></div>
+<div class="glass-card p-8 rounded-3xl border border-white/5 hover:border-white/20 transition-all flex flex-col"><span class="font-label-caps text-label-caps text-white/40 mb-2">ESTÁNDAR</span><div class="text-3xl font-bold text-white mb-6">L 4,000</div><ul class="space-y-4 mb-8 flex-grow"><li class="flex items-center gap-2 text-white/60 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 5 horas</li><li class="flex items-center gap-2 text-white/60 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 70+ fotos</li></ul><button onclick="openBooking()" class="w-full py-3 rounded-full border border-white/20 text-white font-medium hover:bg-white hover:text-black transition-all">Seleccionar</button></div>
 <!-- Premium (Highlighted) -->
-<div class="glass-card p-8 rounded-3xl border-2 border-primary-container relative flex flex-col shadow-2xl shadow-primary-container/20"><div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary-container text-white text-[10px] px-4 py-1 rounded-full font-bold uppercase tracking-widest">Most Popular</div><span class="font-label-caps text-label-caps text-primary-container mb-2">PREMIUM</span><div class="text-3xl font-bold text-white mb-6">L 8,000</div><ul class="space-y-4 mb-8 flex-grow"><li class="flex items-center gap-2 text-white/80 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 2 sesiones</li><li class="flex items-center gap-2 text-white/80 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 8 horas</li><li class="flex items-center gap-2 text-white/80 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 150+ fotos</li></ul><button class="w-full py-3 rounded-full bg-primary-container text-white font-bold hover:brightness-110 transition-all">Elegir Premium</button></div>
+<div class="glass-card p-8 rounded-3xl border-2 border-primary-container relative flex flex-col shadow-2xl shadow-primary-container/20"><div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary-container text-white text-[10px] px-4 py-1 rounded-full font-bold uppercase tracking-widest">Most Popular</div><span class="font-label-caps text-label-caps text-primary-container mb-2">PREMIUM</span><div class="text-3xl font-bold text-white mb-6">L 8,000</div><ul class="space-y-4 mb-8 flex-grow"><li class="flex items-center gap-2 text-white/80 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 2 sesiones</li><li class="flex items-center gap-2 text-white/80 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 8 horas</li><li class="flex items-center gap-2 text-white/80 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 150+ fotos</li></ul><button onclick="openBooking()" class="w-full py-3 rounded-full bg-primary-container text-white font-bold hover:brightness-110 transition-all">Elegir Premium</button></div>
 <!-- Deluxe -->
-<div class="glass-card p-8 rounded-3xl border border-white/5 hover:border-white/20 transition-all flex flex-col"><span class="font-label-caps text-label-caps text-white/40 mb-2">DELUXE</span><div class="text-3xl font-bold text-white mb-6">L 10,000</div><ul class="space-y-4 mb-8 flex-grow"><li class="flex items-center gap-2 text-white/60 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 3 sesiones</li><li class="flex items-center gap-2 text-white/60 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 12 horas</li><li class="flex items-center gap-2 text-white/60 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 200+ fotos</li></ul><button class="w-full py-3 rounded-full border border-white/20 text-white font-medium hover:bg-white hover:text-black transition-all">Seleccionar</button></div>
+<div class="glass-card p-8 rounded-3xl border border-white/5 hover:border-white/20 transition-all flex flex-col"><span class="font-label-caps text-label-caps text-white/40 mb-2">DELUXE</span><div class="text-3xl font-bold text-white mb-6">L 10,000</div><ul class="space-y-4 mb-8 flex-grow"><li class="flex items-center gap-2 text-white/60 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 3 sesiones</li><li class="flex items-center gap-2 text-white/60 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 12 horas</li><li class="flex items-center gap-2 text-white/60 text-sm"><span class="material-symbols-outlined text-primary text-xs">check</span> 200+ fotos</li></ul><button onclick="openBooking()" class="w-full py-3 rounded-full border border-white/20 text-white font-medium hover:bg-white hover:text-black transition-all">Seleccionar</button></div>
 </div>
 </section>
 <!-- Contact Section -->
@@ -240,20 +483,49 @@
 <h2 class="font-headline-lg text-headline-lg text-white mb-8">¿Listo para capturar tu historia?</h2><p class="text-white/60 mb-8 max-w-md mx-auto">Hablemos por WhatsApp para afinar los detalles de tu evento.</p>
 <div class="space-y-6 max-w-md mx-auto">
 <div class="relative">
-<input class="w-full bg-transparent border-0 border-b border-white/20 focus:border-primary-container focus:ring-0 text-white py-4 font-body-md placeholder:text-white/20 transition-colors" placeholder="Nombre" type="text"/>
+<input id="client-name" class="w-full bg-transparent border-0 border-b border-white/20 focus:border-primary-container focus:ring-0 text-white py-4 font-body-md placeholder:text-white/20 transition-colors" placeholder="Tu Nombre" type="text"/>
+</div>
+<div class="relative">
+<input id="event-type" class="w-full bg-transparent border-0 border-b border-white/20 focus:border-primary-container focus:ring-0 text-white py-4 font-body-md placeholder:text-white/20 transition-colors" placeholder="¿Qué evento capturamos? (Ej: Boda, XV años)" type="text"/>
+</div>
+<div class="relative">
+<select id="package-interest" class="w-full bg-white text-black border-0 rounded-xl focus:ring-2 focus:ring-primary-container py-4 px-4 font-body-md transition-colors appearance-none">
+    <option value="" disabled selected>Selecciona un paquete</option>
+    <option value="Sencillo">Sencillo (L 1,000)</option>
+    <option value="Estándar">Estándar (L 4,000)</option>
+    <option value="Premium">Premium (L 8,000)</option>
+    <option value="Deluxe">Deluxe (L 10,000)</option>
+</select>
 </div>
 <div class="pt-8">
-<button class="w-full flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white py-5 rounded-2xl font-bold transition-all transform active:scale-95 shadow-lg shadow-[#25D366]/20"><span class="material-symbols-outlined">chat</span> Contactar por WhatsApp</button>
+<button onclick="sendWhatsApp()" class="w-full flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white py-5 rounded-2xl font-bold transition-all transform active:scale-95 shadow-lg shadow-[#25D366]/20">
+<span class="material-symbols-outlined">chat</span> Enviar por WhatsApp
+</button>
 </div>
 </div>
 </div>
 </section>
 <!-- Footer -->
 <footer class="bg-black w-full py-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center px-16 max-w-[1440px] mx-auto gap-8">
-<div class="text-lg font-black text-white">PhotoEditsPZ</div>
+<div class="flex items-center gap-4">
+    <img src="assets/firma.png" class="h-10 w-auto opacity-50 grayscale" alt="Firma PZ"/>
+    <div class="text-lg font-black text-white">PhotoEditsPZ</div>
+</div>
 <div class="text-white/40 font-inter text-[10px] uppercase tracking-[0.2em] font-light text-center">© 2024 PhotoEditsPZ. Fotografía Refinada.</div>
 <div class="flex gap-8"><a class="text-white/40 hover:text-white/80 transition-opacity font-inter text-[10px] uppercase tracking-[0.2em]" href="#">Política de Privacidad</a>
 <a class="text-white/40 hover:text-white/80 transition-opacity font-inter text-[10px] uppercase tracking-[0.2em]" href="#">Términos de Servicio</a>
 <a class="text-white/40 hover:text-white/80 transition-opacity font-inter text-[10px] uppercase tracking-[0.2em]" href="#">Instagram</a></div>
 </footer>
+<!-- Album Storytelling Modal -->
+<div id="album-modal" class="fixed inset-0 z-[100] bg-black hidden flex-col overflow-y-auto">
+    <div class="sticky top-0 z-10 flex justify-between items-center px-8 py-6 bg-black/80 backdrop-blur-xl border-b border-white/5">
+        <h2 id="modal-title" class="font-display-xl text-2xl text-white">Nombre del Álbum</h2>
+        <button onclick="closeAlbum()" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all text-white">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+    </div>
+    <div id="modal-content" class="p-8 pb-32 flex flex-col items-center">
+        <!-- Las fotos se cargarán aquí dinámicamente -->
+    </div>
+</div>
 </body></html>

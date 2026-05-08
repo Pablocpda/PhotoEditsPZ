@@ -18,16 +18,16 @@ Status: Phase 3 (Development) 🏗️ in progress. Transitioning from static pro
 
 ## In Progress
 
-Phase 3 MVP initialization. Awaiting Next.js + Supabase project scaffold + component migration.
+Migrating storytelling content and design assets from prototype to Next.js components. Defining Supabase schema for dynamic gallery and pricing.
 
 ---
 
 ## Next Steps
 
-- [ ] **Must:** Initialize Next.js project + Supabase schema
-- [ ] **Should:** Migrate static HTML → Next.js App Router components
-- [ ] **Should:** Convert CSS to Tailwind (preserve glassmorphism + animations)
-- [ ] **Could:** Set up Supabase Storage for high-res portfolio assets
+- [x] **Must:** Initialize Next.js project
+- [ ] **Must:** Define Supabase schema (Tables: `packages`, `portfolio_items`, `leads`)
+- [/] **Should:** Migrate static HTML → Next.js App Router components (In progress: `Hero`, `About`, `Gallery` need content sync)
+- [ ] **Should:** Set up Supabase Storage for high-res portfolio assets
 - [ ] **Done:** Phase 3 direction decision (MVP) ✅
 - [ ] **Done:** Design system documented ✅
 
